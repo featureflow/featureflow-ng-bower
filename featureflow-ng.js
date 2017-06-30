@@ -1,7 +1,7 @@
 /*!
- * Featureflow NG Angular 1 Client v0.6.1
+ * Featureflow NG Angular 1 Client v0.6.2
  * Web: https://www.featureflow.io/
- * Date: 2017-06-14T01:47:53.219Z
+ * Date: 2017-06-30T04:55:53.735Z
  * Licence: Apache-2.0
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -889,33 +889,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_featureflow_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_featureflow_client__);
 
 
-(function () {
-    'use strict';
+angular.module('ng-featureflow', []).provider('featureflow', featureflowProvider);
 
-    angular.module('ng-featureflow', []).provider('featureflow', featureflowProvider);
+/**
+ * Very simple angular 1 provider wrapper for the featureflow javascript SDK
+ * See https://github.com/featureflow/featureflow-ng
+ * and https://github.com/featureflow/featureflow-javascript-sdk
+ *
+ * @param $q
+ * @constructor
+ */
+function featureflowProvider() {
 
-    /**
-     * Very simple angular 1 provider wrapper for the featureflow javascript SDK
-     * See https://github.com/featureflow/featureflow-ng
-     * and https://github.com/featureflow/featureflow-javascript-sdk
-     *
-     * @param $q
-     * @constructor
-     */
-    function featureflowProvider() {
-
-        this.apiKey = "";
-        this.context = {};
-        this.init = function (apiKey, context) {
-            this.apiKey = apiKey;
-            this.context = context;
-        };
-        this.$get = function () {
-            var featureflow = __WEBPACK_IMPORTED_MODULE_0_featureflow_client___default.a.init(this.apiKey, this.context);
-            return featureflow;
-        };
-    }
-})();
+    this.apiKey = "";
+    this.context = {};
+    this.init = function (apiKey, context) {
+        this.apiKey = apiKey;
+        this.context = context;
+    };
+    this.$get = function () {
+        var featureflow = __WEBPACK_IMPORTED_MODULE_0_featureflow_client___default.a.init(this.apiKey, this.context);
+        return featureflow;
+    };
+}
 
 /***/ })
 /******/ ]);
